@@ -1,0 +1,308 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Lidia-Vill/unequal-opportunities-infovis/refs/heads/main/labour_market.csv",
+    "format": {"type": "csv"}
+  },
+  "title": {
+    "text": ["Employment Increased Across All Age Groups, Led by Ages 45-49"],
+    "subtitle": "Employment rates by age group in Ireland, 2019 vs 2025",
+    "anchor": "start",
+    "font": "Arial",
+    "fontSize": 20,
+    "fontWeight": "bold",
+    "color": "#1A1A1A",
+    "subtitleFont": "Arial",
+    "subtitleFontSize": 14,
+    "subtitleColor": "#666666",
+    "subtitlePadding": 10,
+    "offset": 15
+  },
+  "spacing": -8,
+  "transform": [
+    {"filter": "datum['Statistic Label'] === 'Annual employment rate'"},
+    {"filter": "datum.Sex === 'Both sexes'"},
+    {"filter": "datum['NUTS 2 Region'] === 'Ireland'"},
+    {
+      "filter": "datum['Education Attainment Level'] === 'Levels of Education (Levels  0-8)'"
+    },
+    {"filter": "datum.Year == 2019 || datum.Year == 2025"},
+    {
+      "filter": "indexof(['20 - 24 years', '25 - 29 years', '30 - 34 years', '35 - 39 years', '40 - 44 years', '45 - 49 years', '50 - 54 years', '55 - 59 years', '60 - 64 years'], datum['Age Group']) >= 0"
+    },
+    {"calculate": "toNumber(datum.VALUE)", "as": "rate"},
+    {"calculate": "toNumber(datum.Year)", "as": "yearNumber"},
+    {"pivot": "yearNumber", "value": "rate", "groupby": ["Age Group"]},
+    {"calculate": "datum['2025'] - datum['2019']", "as": "change"},
+    {"calculate": "format(datum.change, '+.1f') + ' pp'", "as": "changeLabel"},
+    {
+      "calculate": "format(datum['2019'], '.1f') + '% → ' + format(datum['2025'], '.1f') + '%'",
+      "as": "comparisonLabel"
+    },
+    {
+      "calculate": "replace(datum['Age Group'], ' years', '')",
+      "as": "ageLabel"
+    },
+    {"calculate": "(datum['2019'] + datum['2025']) / 2", "as": "midpoint"}
+  ],
+  "vconcat": [
+    {
+      "width": 600,
+      "height": 22,
+      "data": {
+        "values": [
+          {"year": "2019", "x": 15, "labelX": 28},
+          {"year": "2025", "x": 105, "labelX": 118}
+        ]
+      },
+      "layer": [
+        {
+          "mark": {"type": "point", "filled": true, "size": 110},
+          "encoding": {
+            "x": {
+              "field": "x",
+              "type": "quantitative",
+              "scale": null,
+              "axis": null
+            },
+            "y": {"value": 11},
+            "color": {
+              "field": "year",
+              "type": "nominal",
+              "scale": {
+                "domain": ["2019", "2025"],
+                "range": ["#388A83", "#E69A45"]
+              },
+              "legend": null
+            }
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "fontSize": 13,
+            "color": "#555555"
+          },
+          "encoding": {
+            "x": {
+              "field": "labelX",
+              "type": "quantitative",
+              "scale": null,
+              "axis": null
+            },
+            "y": {"value": 11},
+            "text": {"field": "year"}
+          }
+        }
+      ]
+    },
+    {
+      "hconcat": [
+        {
+          "width": 600,
+          "height": 380,
+          "encoding": {
+            "y": {
+              "field": "ageLabel",
+              "type": "ordinal",
+              "sort": [
+                "20 - 24",
+                "25 - 29",
+                "30 - 34",
+                "35 - 39",
+                "40 - 44",
+                "45 - 49",
+                "50 - 54",
+                "55 - 59",
+                "60 - 64"
+              ],
+              "title": null,
+              "axis": {"labelFontSize": 13, "labelPadding": 12, "ticks": false}
+            }
+          },
+          "layer": [
+            {
+              "mark": {"type": "rule", "strokeWidth": 3, "color": "#B4BBC2"},
+              "encoding": {
+                "x": {
+                  "field": "2019",
+                  "type": "quantitative",
+                  "scale": {"domain": [50, 90], "zero": false},
+                  "title": "Employment rate (%)",
+                  "axis": {
+                    "values": [50, 55, 60, 65, 70, 75, 80, 85, 90],
+                    "grid": true,
+                    "gridColor": "#E5E7EB",
+                    "labelAngle": 0,
+                    "labelColor": "#595959",
+                    "titleColor": "#595959"
+                  }
+                },
+                "x2": {"field": "2025"}
+              }
+            },
+            {
+              "transform": [{"filter": "datum.ageLabel === '45 - 49'"}],
+              "mark": {"type": "rule", "strokeWidth": 5, "color": "#526B83"},
+              "encoding": {
+                "x": {"field": "2019", "type": "quantitative"},
+                "x2": {"field": "2025"}
+              }
+            },
+            {
+              "mark": {
+                "type": "point",
+                "filled": true,
+                "size": 115,
+                "color": "#388A83"
+              },
+              "encoding": {"x": {"field": "2019", "type": "quantitative"}}
+            },
+            {
+              "mark": {
+                "type": "point",
+                "filled": true,
+                "size": 115,
+                "color": "#E69A45"
+              },
+              "encoding": {"x": {"field": "2025", "type": "quantitative"}}
+            },
+            {
+              "transform": [{"filter": {"param": "hoverAge", "empty": false}}],
+              "mark": {"type": "rule", "strokeWidth": 5, "color": "#E3B341"},
+              "encoding": {
+                "x": {"field": "2019", "type": "quantitative"},
+                "x2": {"field": "2025"}
+              }
+            },
+            {
+              "transform": [{"filter": {"param": "hoverAge", "empty": false}}],
+              "mark": {
+                "type": "point",
+                "filled": true,
+                "size": 185,
+                "color": "#388A83",
+                "stroke": "white",
+                "strokeWidth": 1
+              },
+              "encoding": {"x": {"field": "2019", "type": "quantitative"}}
+            },
+            {
+              "transform": [{"filter": {"param": "hoverAge", "empty": false}}],
+              "mark": {
+                "type": "point",
+                "filled": true,
+                "size": 185,
+                "color": "#E69A45",
+                "stroke": "white",
+                "strokeWidth": 1
+              },
+              "encoding": {"x": {"field": "2025", "type": "quantitative"}}
+            },
+            {
+              "transform": [{"filter": {"param": "hoverAge", "empty": false}}],
+              "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "bottom",
+                "dy": -12,
+                "fontSize": 12,
+                "fontWeight": "bold",
+                "color": "#8A6515"
+              },
+              "encoding": {
+                "x": {"field": "midpoint", "type": "quantitative"},
+                "text": {"field": "comparisonLabel"}
+              }
+            },
+            {
+              "params": [
+                {
+                  "name": "hoverAge",
+                  "select": {
+                    "type": "point",
+                    "fields": ["ageLabel"],
+                    "on": "pointermove",
+                    "clear": "pointerout"
+                  }
+                }
+              ],
+              "mark": {"type": "rect", "color": "white", "opacity": 0.001},
+              "encoding": {"x": {"value": 0}, "x2": {"value": 600}}
+            }
+          ]
+        },
+        {
+          "width": 95,
+          "height": 380,
+          "title": {
+            "text": "Change",
+            "anchor": "start",
+            "fontSize": 13,
+            "fontWeight": "bold",
+            "offset": 8
+          },
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "fontSize": 13
+          },
+          "encoding": {
+            "y": {
+              "field": "ageLabel",
+              "type": "ordinal",
+              "sort": [
+                "20 - 24",
+                "25 - 29",
+                "30 - 34",
+                "35 - 39",
+                "40 - 44",
+                "45 - 49",
+                "50 - 54",
+                "55 - 59",
+                "60 - 64"
+              ],
+              "axis": null
+            },
+            "x": {"value": 0},
+            "text": {"field": "changeLabel"},
+            "color": {
+              "condition": [
+                {"param": "hoverAge", "empty": false, "value": "#B07A10"},
+                {"test": "datum.ageLabel === '45 - 49'", "value": "#333333"}
+              ],
+              "value": "#666666"
+            },
+            "fontWeight": {
+              "condition": [
+                {"param": "hoverAge", "empty": false, "value": "bold"},
+                {"test": "datum.ageLabel === '45 - 49'", "value": "bold"}
+              ],
+              "value": "normal"
+            }
+          }
+        }
+      ],
+      "resolve": {"scale": {"y": "shared"}}
+    }
+  ],
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "gridColor": "#E5E7EB",
+      "gridOpacity": 0.7,
+      "domain": false,
+      "ticks": false,
+      "labelColor": "#595959",
+      "titleColor": "#595959",
+      "titleFontWeight": "normal",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelPadding": 10,
+      "titlePadding": 14
+    }
+  }
+}

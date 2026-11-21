@@ -1,0 +1,180 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f7f7f5;
+  color: #1a1a1a;
+  font-family: Arial, sans-serif;
+  line-height: 1.65;
+}
+
+.page {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+p {
+  font-size: 16px;
+}
+
+/* Introduction */
+
+.intro {
+  max-width: 820px;
+  padding-bottom: 35px;
+  border-bottom: 1px solid #ddd;
+}
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+.intro h2 {
+  font-size: 24px;
+  margin: 15px 0;
+}
+
+.intro-hint {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+/* Chart sections */
+
+.story-section {
+  margin: 45px 0 55px;
+}
+
+.story-section h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+/* Cards fit their chart content */
+
+.chart-card {
+  display: table;
+  background: white;
+  border: 1px solid #e3e3e0;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.chart {
+  min-height: 240px;
+}
+
+.chart .vega-embed {
+  display: inline-block;
+}
+
+/* Education and regional chart headers */
+
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.chart-header h4 {
+  font-size: 20px;
+  line-height: 1.4;
+  margin: 0;
+  font-weight: bold;
+}
+
+.chart-subtitle {
+  font-size: 14px;
+  color: #555;
+  margin: 4px 0 16px;
+}
+
+/* Year dropdowns */
+
+.chart-controls {
+  flex-shrink: 0;
+}
+
+.chart-controls .vega-bindings {
+  margin: 0;
+}
+
+.chart-controls .vega-bind {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.chart-controls select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #f7f7f5;
+  color: #1a1a1a;
+  font: inherit;
+  cursor: pointer;
+}
+
+.chart-controls select:hover {
+  border-color: #888;
+}
+
+.chart-controls select:focus {
+  outline: 2px solid #5b9f85;
+  outline-offset: 2px;
+}
+
+/* Interaction notes */
+
+.chart-hint {
+  font-size: 13px;
+  font-style: italic;
+  margin: 14px 0 0;
+}
+
+/* Text below charts */
+
+.interpretation {
+  max-width: 800px;
+  margin-top: 18px;
+}
+
+.transition {
+  margin-top: 12px;
+}
+
+/* Conclusion */
+
+.conclusion {
+  max-width: 830px;
+  border-top: 1px solid #ddd;
+  padding-top: 30px;
+}
+
+.conclusion h2 {
+  font-size: 26px;
+}
+
+footer {
+  font-size: 13px;
+  border-top: 1px solid #ddd;
+  margin-top: 30px;
+  padding-top: 20px;
+}

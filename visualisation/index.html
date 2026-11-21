@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Unequal Opportunities | Ireland's Labour Market</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+<body>
+  <main class="page">
+
+    <!-- INTRODUCTION -->
+    <header class="intro">
+      <p class="eyebrow">IRELAND'S LABOUR MARKET · 2019-2025</p>
+
+      <h1>Unequal Opportunities</h1>
+
+      <h2>Has Ireland's employment growth benefited everyone equally?</h2>
+
+      <p>
+        Ireland's labour market has improved since 2019, but national
+        figures do not tell the whole story. Employment opportunities
+        can vary depending on someone's stage of life, educational
+        qualifications and where they live, while differences between
+        men and women remain an important measure of labour market
+        inequality. Looking beyond the national figures, let's look into
+        how these differences have evolved over time.
+      </p>
+
+      <p class="intro-hint">
+        Explore the interactive charts below. Hover over the data
+        for more details or use the year selectors to compare changes
+        over time.
+      </p>
+    </header>
+
+
+    <!-- 1. NATIONAL TRENDS -->
+    <section class="story-section">
+      <h3>1. National Labour Market Trends</h3>
+
+      <div class="chart-card">
+        <div id="national-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Hover over the points to explore employment and unemployment rates for each year.
+        </p>
+      </div>
+
+      <p class="interpretation">
+        Overall, Ireland's labour market appears to be in a stronger
+        position than it was in 2019, despite the disruption caused
+        by the pandemic. However, national figures alone cannot tell
+        us whether these improvements have been experienced equally
+        across different population groups.
+      </p>
+    </section>
+
+
+    <!-- 2. GENDER -->
+    <section class="story-section">
+      <h3>2. Gender Employment Gap</h3>
+
+      <div class="chart-card">
+        <div id="gender-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Hover over the points to see the exact gender gap for each year.
+        </p>
+      </div>
+
+      <p class="interpretation">
+        The difference between male and female employment rates has
+        become smaller, although it has not disappeared. This suggests
+        progress towards more balanced employment rates, but gender
+        is only one aspect to consider. Employment also varies
+        considerably depending on age.
+      </p>
+    </section>
+
+
+    <!-- 3. AGE -->
+    <section class="story-section">
+      <h3>3. Employment by Age</h3
+
+      <div class="chart-card">
+        <div id="age-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Hover over the points to compare the exact employment rates for each age group.
+        </p>
+      </div>
+
+      <p class="interpretation">
+        While all age groups have experienced improvements, some
+        have benefited more than others. Age is particularly
+        interesting because employment patterns can change
+        throughout people's working lives. For example, many people
+        aged 20-24 may still be studying or transitioning into the
+        workforce, which is worth keeping in mind when comparing
+        their employment rates with those of older age groups.
+        Beyond age and gender, education also introduces another
+        important difference.
+      </p>
+    </section>
+
+
+    <!-- 4. EDUCATION -->
+    <section class="story-section">
+      <h3>4. Employment by Education</h3>
+
+      <div class="chart-card">
+
+        <div class="chart-header">
+          <h4>Employment Rates Remain Far Apart Across Education Levels</h4>
+          <div id="education-controls" class="chart-controls"></div>
+        </div>
+
+        <p class="chart-subtitle">
+          Employment rates by highest educational attainment
+          in Ireland, 2019-2025
+        </p>
+
+        <div id="education-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Select a year to explore how employment rates and
+          the education gap have changed over time.
+        </p>
+      </div>
+
+      <p class="interpretation">
+        Here, the differences are particularly noticeable. People
+        with higher qualifications consistently have higher
+        employment rates, and educational attainment can influence
+        the types of jobs available to someone. This makes the
+        persistent gap between education levels especially relevant.
+      </p>
+
+      <p class="interpretation transition">
+        So far, we've explored how employment differs between
+        population groups, but what happens when we look at
+        where people live instead?
+      </p>
+    </section>
+
+
+    <!-- 5. REGIONAL -->
+    <section class="story-section">
+      <h3>5. Regional Employment Differences</h3>
+
+      <div class="chart-card">
+
+        <div class="chart-header">
+          <h4>
+            Ireland's Regional Employment Gap Fell from
+            3.8 to 1.4 Percentage Points
+          </h4>
+          <div id="regional-controls" class="chart-controls"></div>
+        </div>
+
+        <p class="chart-subtitle">
+          Employment rates across Ireland's three NUTS 2 regions
+          - Gap = highest minus lowest regional rate
+        </p>
+
+        <div id="regional-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Select a year to compare regional employment rates
+          with the 2019 baseline.
+        </p>
+      </div>
+
+      <p class="interpretation">
+        Regional differences tell a somewhat different story.
+        Where people live can influence the employment opportunities
+        available to them, but the rates across Ireland's regions
+        have become more similar over time. This shows that not
+        all inequalities have followed the same pattern.
+      </p>
+    </section>
+
+
+    <!-- CONCLUSION -->
+    <section class="conclusion">
+      <h2>What does this tell us?</h2>
+
+      <p>
+        Ireland's labour market has improved since 2019, and some
+        of the gaps have become smaller. However, not everyone has
+        experienced the same level of progress, and substantial
+        differences remain, particularly across education levels.
+        Overall, the figures show that a stronger labour market
+        does not necessarily mean more equal employment outcomes.
+      </p>
+
+      <p>
+        These comparisons show how employment outcomes differ
+        between groups, but they do not necessarily explain
+        the reasons behind those differences.
+      </p>
+    </section>
+
+
+    <!-- DATA SOURCE -->
+    <footer>
+      Data source: Central Statistics Office (CSO), Ireland | 2019-2025
+    </footer>
+
+  </main>
+
+
+  <!-- LOAD CHARTS -->
+  <script>
+    const charts = [
+      ["#national-chart", "charts/national_trends.json", null],
+      ["#gender-chart", "charts/gender_gap.json", null],
+      ["#age-chart", "charts/age_comparison.json", null],
+      ["#education-chart", "charts/education_gap.json", "#education-controls"],
+      ["#regional-chart", "charts/regional_comparison.json", "#regional-controls"]
+    ];
+
+    async function loadChart(container, file, controls) {
+      try {
+        const response = await fetch(file);
+
+        if (!response.ok) {
+          throw new Error("Could not load " + file);
+        }
+
+        const spec = await response.json();
+
+        // Education and regional titles are already in the HTML.
+        if (controls) {
+          delete spec.title;
+        }
+
+        const result = await vegaEmbed(container, spec, {
+          actions: false,
+          renderer: "svg"
+        });
+
+        // Move Vega-Lite's existing dropdown into the card header.
+        if (controls) {
+          const bindings = document.querySelector(
+            container + " .vega-bindings"
+          );
+
+          if (bindings) {
+            document.querySelector(controls).appendChild(bindings);
+          }
+        }
+
+      } catch (error) {
+        console.error("Error loading " + file, error);
+
+        document.querySelector(container).textContent =
+          "Unable to load this chart. Check the JSON file and path.";
+      }
+    }
+
+    charts.forEach(([container, file, controls]) => {
+      loadChart(container, file, controls);
+    });
+  </script>
+
+</body>
+</html>
