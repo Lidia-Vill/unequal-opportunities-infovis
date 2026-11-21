@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Unequal Opportunities | Ireland's Labour Market</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+
+<body>
+  <main class="page" id="top">
+
+    <!-- INTRODUCTION -->
+    <header class="intro">
+      <p class="eyebrow">IRELAND'S LABOUR MARKET · 2019–2025</p>
+
+      <h1>Unequal Opportunities</h1>
+
+      <h2>
+        Has Ireland's employment growth benefited everyone equally?
+      </h2>
+
+      <p>
+        Ireland's labour market has improved since 2019, but national
+        figures do not tell the whole story. Employment opportunities
+        can vary depending on someone's stage of life, educational
+        qualifications and where they live, while differences between
+        men and women remain an important measure of labour market
+        inequality. Looking beyond the national figures, let's look into
+        how these differences have evolved over time.
+      </p>
+
+      <p class="intro-hint">
+        Explore the interactive charts below. Hover over the data
+        for more details or use the year selectors to compare changes
+        over time.
+      </p>
+    </header>
+
+
+    <!-- NAVIGATION AND GLOBAL YEAR SELECTOR -->
+    <nav class="dashboard-nav" aria-label="Dashboard navigation">
+
+      <div class="nav-links">
+        <a href="#national">National</a>
+        <a href="#gender">Gender</a>
+        <a href="#age">Age</a>
+        <a href="#education">Education</a>
+        <a href="#regional">Regions</a>
+        <a href="#conclusion">Conclusion</a>
+      </div>
+
+      <div class="global-controls">
+        <label for="global-year">Year</label>
+
+        <select id="global-year">
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025" selected>2025</option>
+        </select>
+      </div>
+
+    </nav>
+
+    <p class="global-hint">
+      Select a year to explore employment outcomes, or use the
+      individual chart controls to compare independently.
+    </p>
+
+
+    <!-- 1. NATIONAL TRENDS -->
+    <section class="story-section" id="national">
+
+      <h3>1. National Labour Market Trends</h3>
+
+      <div class="chart-card">
+
+        <div id="national-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Hover over the points to explore employment and
+          unemployment rates for each year.
+        </p>
+
+      </div>
+
+      <p class="interpretation">
+        Overall, Ireland's labour market appears to be in a stronger
+        position than it was in 2019, despite the disruption caused
+        by the pandemic. However, national figures alone cannot tell
+        us whether these improvements have been experienced equally
+        across different population groups.
+      </p>
+
+    </section>
+
+
+    <!-- 2. GENDER -->
+    <section class="story-section" id="gender">
+
+      <h3>2. Gender Employment Gap</h3>
+
+      <div class="chart-card">
+
+        <div id="gender-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Hover over the points to see the exact gender gap
+          for each year.
+        </p>
+
+      </div>
+
+      <p class="interpretation">
+        The difference between male and female employment rates
+        has become smaller, although it has not disappeared.
+        This suggests progress towards more balanced employment
+        rates, but gender is only one aspect to consider.
+        Employment also varies considerably depending on age.
+      </p>
+
+    </section>
+
+
+    <!-- 3. AGE -->
+    <section class="story-section" id="age">
+
+      <h3>3. Employment by Age</h3>
+
+      <div class="chart-card">
+
+        <div id="age-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Hover over an age group to compare its employment rates
+          and see the change from 2019 to the selected year.
+        </p>
+
+      </div>
+
+      <p class="interpretation">
+        Employment rates vary considerably across age groups,
+        and the amount of change since 2019 is not the same
+        for everyone. Age is particularly interesting because
+        employment patterns can change throughout people's
+        working lives. For example, many people aged 20–24
+        may still be studying or transitioning into the
+        workforce, which is worth keeping in mind when
+        comparing their employment rates with those of
+        older age groups.
+      </p>
+
+      <p class="interpretation transition">
+        Beyond age and gender, education also introduces
+        another important difference.
+      </p>
+
+    </section>
+
+
+    <!-- 4. EDUCATION -->
+    <section class="story-section" id="education">
+
+      <h3>4. Employment by Education</h3>
+
+      <div class="chart-card">
+
+        <div class="chart-header">
+
+          <h4>
+            Employment Rates Remain Far Apart Across Education Levels
+          </h4>
+
+          <div
+            id="education-controls"
+            class="chart-controls">
+          </div>
+
+        </div>
+
+        <p class="chart-subtitle">
+          Employment rates by highest educational attainment
+          in Ireland, 2019–2025
+        </p>
+
+        <div id="education-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Use the year selector above or the individual chart
+          control to explore employment rates and the education gap.
+        </p>
+
+      </div>
+
+      <p class="interpretation">
+        Here, the differences are particularly noticeable.
+        People with higher qualifications consistently have
+        higher employment rates, and educational attainment
+        can influence the types of jobs available to someone.
+        This makes the persistent gap between education
+        levels especially relevant.
+      </p>
+
+      <p class="interpretation transition">
+        So far, we've explored how employment differs between
+        population groups, but what happens when we look at
+        where people live instead?
+      </p>
+
+    </section>
+
+
+    <!-- 5. REGIONAL -->
+    <section class="story-section" id="regional">
+
+      <h3>5. Regional Employment Differences</h3>
+
+      <div class="chart-card">
+
+        <div class="chart-header">
+
+          <h4>
+            Ireland's Regional Employment Gap Fell from
+            3.8 to 1.4 Percentage Points
+          </h4>
+
+          <div
+            id="regional-controls"
+            class="chart-controls">
+          </div>
+
+        </div>
+
+        <p class="chart-subtitle">
+          Employment rates across Ireland's three NUTS 2 regions
+          — Gap = highest minus lowest regional rate
+        </p>
+
+        <div id="regional-chart" class="chart"></div>
+
+        <p class="chart-hint">
+          Use the global or individual year selector to compare
+          regional employment rates with the 2019 baseline.
+        </p>
+
+      </div>
+
+      <p class="interpretation">
+        Regional differences tell a somewhat different story.
+        Where people live can influence the employment opportunities
+        available to them, but the rates across Ireland's regions
+        have become more similar over time. This shows that not
+        all inequalities have followed the same pattern.
+      </p>
+
+    </section>
+
+
+    <!-- CONCLUSION -->
+    <section class="conclusion" id="conclusion">
+
+      <h2>What does this tell us?</h2>
+
+      <p>
+        Ireland's labour market has improved since 2019, and
+        some of the gaps have become smaller. However, not
+        everyone has experienced the same level of progress,
+        and substantial differences remain, particularly
+        across education levels. Overall, the figures show
+        that a stronger labour market does not necessarily
+        mean more equal employment outcomes.
+      </p>
+
+      <p>
+        These comparisons show how employment outcomes differ
+        between groups, but they do not necessarily explain
+        the reasons behind those differences.
+      </p>
+
+    </section>
+
+
+    <!-- DATA SOURCE -->
+    <footer>
+
+      <span>
+        Data source: Central Statistics Office (CSO),
+        Ireland | 2019–2025
+      </span>
+
+      <a href="#top" class="back-to-top">
+        Back to top ↑
+      </a>
+
+    </footer>
+
+  </main>
+
+
+  <!-- LOAD AND SYNCHRONISE CHARTS -->
+  <script>
+
+    const chartViews = {};
+
+    const charts = [
+      [
+        "national",
+        "#national-chart",
+        "charts/national_trends.json"
+      ],
+      [
+        "gender",
+        "#gender-chart",
+        "charts/gender_gap.json"
+      ],
+      [
+        "age",
+        "#age-chart",
+        "charts/age_comparison.json"
+      ],
+      [
+        "education",
+        "#education-chart",
+        "charts/education_gap.json"
+      ],
+      [
+        "regional",
+        "#regional-chart",
+        "charts/regional_comparison.json"
+      ]
+    ];
+
+    const globalYear = document.getElementById("global-year");
+
+    const localControls = {
+      education: "#education-controls",
+      regional: "#regional-controls"
+    };
+
+    const yearEnabled = new Set();
+
+    // Find a selectedYear parameter in a Vega-Lite specification.
+    function getYearParameter(spec) {
+      return Array.isArray(spec.params)
+        ? spec.params.find(param => param.name === "selectedYear")
+        : null;
+    }
+
+    // Update the displayed value of an individual dropdown.
+    function syncLocalDropdown(name, year) {
+      const controlsSelector = localControls[name];
+
+      if (!controlsSelector) {
+        return;
+      }
+
+      const select = document.querySelector(
+        controlsSelector + " select"
+      );
+
+      if (select) {
+        select.value = String(year);
+      }
+    }
+
+    // Load one Vega-Lite chart.
+    async function loadChart(name, container, file) {
+
+      try {
+
+        const response = await fetch(file);
+
+        if (!response.ok) {
+          throw new Error("Could not load " + file);
+        }
+
+        const spec = await response.json();
+
+        const yearParam = getYearParameter(spec);
+
+        // Education and Regional already have HTML titles.
+        if (name === "education" || name === "regional") {
+          delete spec.title;
+        }
+
+        if (yearParam) {
+
+          yearParam.value = Number(globalYear.value);
+
+          // Restore individual selectors if necessary.
+          if (localControls[name] && !yearParam.bind) {
+            yearParam.bind = {
+              input: "select",
+              options: [2020, 2021, 2022, 2023, 2024, 2025],
+              name: "Year: "
+            };
+          }
+
+        }
+
+        const result = await vegaEmbed(container, spec, {
+          actions: false,
+          renderer: "svg"
+        });
+
+        chartViews[name] = result.view;
+
+        // Move individual Vega-Lite dropdowns
+        // into the corresponding chart headers.
+        if (localControls[name]) {
+
+          const bindings = document.querySelector(
+            container + " .vega-bindings"
+          );
+
+          const destination = document.querySelector(
+            localControls[name]
+          );
+
+          if (bindings && destination) {
+            destination.appendChild(bindings);
+          }
+
+        }
+
+        // Set the initial year.
+        if (yearParam) {
+
+          yearEnabled.add(name);
+
+          await result.view
+            .signal(
+              "selectedYear",
+              Number(globalYear.value)
+            )
+            .runAsync();
+
+          syncLocalDropdown(
+            name,
+            Number(globalYear.value)
+          );
+
+        }
+
+      } catch (error) {
+
+        console.error(
+          "Error loading " + file,
+          error
+        );
+
+        document.querySelector(container).textContent =
+          "Unable to load this chart. Check the JSON file and path.";
+
+      }
+
+    }
+
+    // Change all supported charts together.
+    async function updateGlobalYear() {
+
+      const year = Number(globalYear.value);
+
+      try {
+
+        await Promise.all(
+          Array.from(yearEnabled).map(async name => {
+
+            const view = chartViews[name];
+
+            if (view) {
+
+              await view
+                .signal("selectedYear", year)
+                .runAsync();
+
+              syncLocalDropdown(name, year);
+
+            }
+
+          })
+        );
+
+      } catch (error) {
+
+        console.error(
+          "Unable to update selected year:",
+          error
+        );
+
+      }
+
+    }
+
+    globalYear.addEventListener(
+      "change",
+      updateGlobalYear
+    );
+
+    // Load all five charts.
+    charts.forEach(([name, container, file]) => {
+      loadChart(name, container, file);
+    });
+
+  </script>
+
+</body>
+</html>
